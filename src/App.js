@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Die from "./Die"
 import { nanoid } from 'nanoid';
+import Confetti from 'react-confetti'
 
 
 function App() {
@@ -58,12 +59,13 @@ function generateNewDie() {
 
   return (
     <main className="App">
+      {tenzies && <Confetti />}
             <h1 className="title">Tenzies</h1>
             <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
             <div className="dice-container">
         {diceElements}
             </div>
-        <button onClick={rollDice} className='roll-dice'>Roll</button>
+        <button onClick={rollDice} className='roll-dice'>{tenzies ? "New Game" : "Roll"}</button>
     </main>
   );
 }
